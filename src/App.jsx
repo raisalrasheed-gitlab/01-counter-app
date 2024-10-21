@@ -2,20 +2,30 @@ import './App.css';
 import { useState } from 'react';
 
 const App = () => {
-  const [count, setcount] = useState(0);
+  const [count, setCount] = useState(0);
+  const [control, setControl] = useState(false);
+
   const onAdd = () => {
-    setcount(() => count + 1);
+    setCount(() => count + 1);
   };
   const onMinus = () => {
-    setcount(count - 1);
+    setCount(count - 1);
+  };
+  const onShow = () => {
+    setControl(true);
+  };
+  const onHide = () => {
+    setControl(false);
   };
   return (
     <>
       <div className="counter-main">
-        <h1>{count}</h1>
+        {control ? <h1>{count}</h1> : null}
         <div>
+          <button onClick={onHide}>Hide</button>
           <button onClick={onAdd}>ADD</button>
           <button onClick={onMinus}>Minus</button>
+          <button onClick={onShow}>Show</button>
         </div>
       </div>
     </>
